@@ -1,4 +1,5 @@
 # Minesweeper
+![build_badge](https://travis-ci.org/onenetworkguy/minesweeper.svg?branch=master)
 
 ## Overview
 
