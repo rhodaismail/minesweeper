@@ -1,22 +1,24 @@
-// Constant for minesweeper board. 3 columns 1 row
-const blankline = '  |   |  ';
+// printBoard function
+const printBoard = board => {
+  console.log('Current Board:');
+  console.log(board[0].join(' | '));
+  console.log(board[1].join(' | '));
+  console.log(board[2].join(' | '));
+};
 
-// Minesweeper board hardcoded.
-console.log('This is what an empty board would look like:');
-console.log(blankline);
-console.log(blankline);
-console.log(blankline);
+// Create board array
+let board = [
+  [' ', ' ', ' '],
+  [' ', ' ', ' '],
+  [' ', ' ', ' '],
+];
 
-// guessLine represents what the board will look like when a player guesses by
-// "clicking" (selecting) the first square of this row.
-const guessLine = '1 |   |  ';
+// Log the board
+console.log(printBoard(board));
 
-// bombLine represents what the board will look like when a player
-// clicks and reveals a bomb.
-const bombLine = '  | B |  ';
+// Modify array indexes with moves
+board[0][1] = '1';
+board[2][2] = 'B';
 
-// Example played minesweeper board
-console.log('This is what a board with a guess and a bomb on it would look like:');
-console.log(guessLine);
-console.log(bombLine);
-console.log(blankline);
+// Log the board after array changes
+console.log(printBoard(board));
