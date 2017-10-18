@@ -8,6 +8,7 @@
 * **[Day 7 Project](#day-7-project)**
 * **[Day 10-11 Project](#day-10-11-project)**
 * **[Day 14 Project](#day-14-project)**
+* **[Day 17-18 Project](#day-17-18-project)**
 
 ## Overview
 
@@ -32,3 +33,8 @@ Created dynamically generated boards based on a given number of rows and columns
 Added two functions. One to identify number of :bomb: adjacent to a tile and one to fliptiles :octocat:
 
 [Link to code](https://github.com/onenetworkguy/minesweeper/tree/day_14)
+
+## Day 17-18 Project
+Refactored code to use classes. :100:
+
+[Link to code](https://github.com/onenetworkguy/minesweeper/tree/day_17_18)
