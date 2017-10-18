@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // Function that will generate a blank board of a given size to hold the player's guesses
 const generatePlayerBoard = (numberOfRows, numberOfColumns) => {
   // Initialize empty array to store the board
@@ -71,33 +70,10 @@ const playerBoard = generatePlayerBoard(3, 4);
 // Create bombBoard variable
 const bombBoard = generateBombBoard(3, 4, 5);
 
+// Print player board
 console.log('Player Board: ');
 printBoard(playerBoard);
+
+// Print bomb board
 console.log('Bomb Board: ');
 printBoard(bombBoard);
-=======
-// printBoard function
-const printBoard = board => {
-  console.log('Current Board:');
-  console.log(board[0].join(' | '));
-  console.log(board[1].join(' | '));
-  console.log(board[2].join(' | '));
-};
-
-// Create board array
-let board = [
-  [' ', ' ', ' '],
-  [' ', ' ', ' '],
-  [' ', ' ', ' '],
-];
-
-// Log the board
-console.log(printBoard(board));
-
-// Modify array indexes with moves
-board[0][1] = '1';
-board[2][2] = 'B';
-
-// Log the board after array changes
-console.log(printBoard(board));
->>>>>>> e4315b8cba2c7b1a61849a485e1b247b9d132541
