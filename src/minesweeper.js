@@ -1,22 +1,76 @@
-// Constant for minesweeper board. 3 columns 1 row
-const blankline = '  |   |  ';
+// Function that will generate a blank board of a given size to hold the player's guesses
+const generatePlayerBoard = (numberOfRows, numberOfColumns) => {
+  // Initialize empty array to store the board
+  let board = [];
+  // loop to iterate over the number of rows
+  for (let rowIndex = 0; rowIndex < numberOfRows; rowIndex++) {
+    // Initialize empty array to store number of columns in each row
+    let row = [];
+    // loop to iterate over the number of columns
+    for (let columnIndex = 0; columnIndex < numberOfColumns; columnIndex++) {
+      // Append empty squares to the row array
+      row.push(' ');
+    };
+    // Append the row array to the board array
+    board.push(row);
+  };
+  // return the created board
+  return board;
+};
 
-// Minesweeper board hardcoded.
-console.log('This is what an empty board would look like:');
-console.log(blankline);
-console.log(blankline);
-console.log(blankline);
+// Function that will dynamically generate a board with bombs placed in squares
+const generateBombBoard = (numberOfRows, numberOfColumns, numberOfBombs) => {
+  // Initialize empty array to store the board
+  let board = [];
+  // loop to iterate over the number of rows
+  for (let rowIndex = 0; rowIndex < numberOfRows; rowIndex++) {
+    // Initialize empty array to store number of columns in each row
+    let row = [];
+    // loop to iterate over the number of columns
+    for (let columnIndex = 0; columnIndex < numberOfColumns; columnIndex++) {
+      // Append empty squares to the row array
+      row.push(null);
+    };
+    // Append the row array to the board array
+    board.push(row);
+  };
+  // bomb counter variable
+  let numberOfBombsPlaced = 0;
+  // while loop to generate random number to place bombs
+  while (numberOfBombsPlaced < numberOfBombs) {
+    // TODO: An important note: The code in your while loop has the potential to place bombs on top of already existing bombs.
+    // This will be fixed when you learn about control flow.
+    // Using Math.floor to round lower to integer
+    // Using Math.random to generate a random number between 0 and numberOfRows
+    // Generate random row index
+    let randomRowIndex = Math.floor(Math.random() * numberOfRows);
+    // Generate random column index
+    let randomColumnIndex = Math.floor(Math.random() * numberOfColumns);
+    // Place a bomb at the intersection of row index and column index
+    board[randomRowIndex][randomColumnIndex] = 'B';
+    // Increment number of bombs placed
+    numberOfBombsPlaced++
+  };
 
-// guessLine represents what the board will look like when a player guesses by
-// "clicking" (selecting) the first square of this row.
-const guessLine = '1 |   |  ';
+  // return the created board
+  return board;
+};
 
-// bombLine represents what the board will look like when a player
-// clicks and reveals a bomb.
-const bombLine = '  | B |  ';
+// printBoard function
+const printBoard = board => {
+  // use map() method on board to create new array
+  // chain .join() methods to create board spaces and newlines
+  // log to console
+  console.log(board.map(row => row.join(' | ')).join('\n'));
+};
 
-// Example played minesweeper board
-console.log('This is what a board with a guess and a bomb on it would look like:');
-console.log(guessLine);
-console.log(bombLine);
-console.log(blankline);
+// Create playerBoard variable
+const playerBoard = generatePlayerBoard(3, 4);
+
+// Create bombBoard variable
+const bombBoard = generateBombBoard(3, 4, 5);
+
+console.log('Player Board: ');
+printBoard(playerBoard);
+console.log('Bomb Board: ');
+printBoard(bombBoard);
