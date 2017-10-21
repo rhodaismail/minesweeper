@@ -1,34 +1,5 @@
-// Game class - "main"
-class Game {
-  // constructor
-  constructor(numberOfRows, numberOfColumns, numberOfBombs) {
-    // Instantiate the board
-    this._board = new Board(numberOfRows, numberOfColumns, numberOfBombs);
-  }
-
-  // Method to make a move
-  playMove(rowIndex, columnIndex) {
-    // Call flipTile method on instances board
-    this._board.flipTile(rowIndex, columnIndex);
-    // Evaluate if the flipped tile contained a bomb
-    if (this._board.playerBoard[rowIndex][columnIndex] === 'B') {
-      // Notify player they have lost
-      console.log('You hit a bomb! Game over!');
-      // Print the board with the bomb hit
-      this._board.printBoard();
-    // Evaluate if the board has no safe tiles. If no more safe tiles, player has won
-  } else if (this._board.hasSafeTiles() === false) {
-      return 'You have won!';
-    // Continue play
-    } else {
-      console.log('Current Board:');
-      this._board.printBoard();
-    }
-  }
-}
-
 // Board class used for minesweeper game
-class Board {
+export class Board {
   // constructor
   constructor(numberOfRows, numberOfColumns, numberOfBombs) {
     // Instance properties
@@ -49,8 +20,8 @@ class Board {
     if (this._playerBoard[rowIndex][columnIndex] !== ' ') {
       // Inform player tile has been flipped
       console.log('This tile has already been flipped!');
-    // Check if bomb in tile
-  } else if (this._bombBoard[rowIndex][columnIndex] === 'B') {
+      // Check if bomb in tile
+    } else if (this._bombBoard[rowIndex][columnIndex] === 'B') {
       // Place bomb on playerBoard
       this._playerBoard[rowIndex][columnIndex] = 'B';
     } else {
@@ -64,7 +35,16 @@ class Board {
   // Method to get the number of bombs adjacent to the flipped tile
   getNumberOfNeighborBombs(rowIndex, columnIndex) {
     // var to store 8 possible iterations
-    this._neighborOffset = [[-1,-1], [-1,0], [-1,1], [0,-1], [0,1], [1,-1], [1,0], [1,1]];
+    this._neighborOffset = [
+      [-1, -1],
+      [-1, 0],
+      [-1, 1],
+      [0, -1],
+      [0, 1],
+      [1, -1],
+      [1, 0],
+      [1, 1]
+    ];
     // var to store number of rows which will be equal to the length of the bomb board
     this._numberOfRows = this._bombBoard.length;
     // var to store number of columns which will be equal to the length of the first bomb board element
@@ -78,15 +58,15 @@ class Board {
       // var for the neighboring column of the inputed columnIndex, apply offset
       this._neighborColumnIndex = columnIndex + offset[1];
       // Check if tile is valid
-      if (this._neighborRowIndex >= 0
-        && this._neighborRowIndex < this._numberOfRows
-        && this._neighborColumnIndex >= 0
-        && this._neighborColumnIndex < this._numberOfColumns) {
-          // Check if bomb in tile
-          if (this._bombBoard[this._neighborRowIndex][this._neighborColumnIndex] === 'B') {
-            this._numberOfBombs++; // Bomb found increment number of bombs
-          }
+      if (this._neighborRowIndex >= 0 &&
+        this._neighborRowIndex < this._numberOfRows &&
+        this._neighborColumnIndex >= 0 &&
+        this._neighborColumnIndex < this._numberOfColumns) {
+        // Check if bomb in tile
+        if (this._bombBoard[this._neighborRowIndex][this._neighborColumnIndex] === 'B') {
+          this._numberOfBombs++; // Bomb found increment number of bombs
         }
+      }
     })
     return this._numberOfBombs;
   }
@@ -162,7 +142,3 @@ class Board {
     return board;
   }
 }
-
-const g = new Game(3, 3, 3);
-
-g.playMove(2, 1);
