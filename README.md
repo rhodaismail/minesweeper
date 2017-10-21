@@ -76,5 +76,5 @@ Refactored code to use classes. :100:
 ### Day 20 Project
 Refactored code to be exportable.
 
-[Board class](https://github.com/onenetworkguy/minesweeper/blob/master/src/board.js)
-[Game class](https://github.com/onenetworkguy/minesweeper/blob/master/src/game.js)
+* [Board class](https://github.com/onenetworkguy/minesweeper/blob/master/src/board.js)
+* [Game class](https://github.com/onenetworkguy/minesweeper/blob/master/src/game.js)
