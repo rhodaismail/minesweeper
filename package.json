@@ -4,7 +4,7 @@
   "description": "The game Minesweeper created in Javascript",
   "main": "index.js",
   "scripts": {
-    "test": "node src/minesweeper.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "babel src -d lib"
   },
   "repository": {
